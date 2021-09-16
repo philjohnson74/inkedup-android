@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Inked Up Android</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
+    <string name="app_name">Inked Up</string>
+    <string name="tab_text_pens">Pens</string>
+    <string name="tab_text_ink">Ink</string>
 </resources>

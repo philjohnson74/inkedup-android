@@ -8,16 +8,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.pjsoftware.inkedupandroid.R
-import com.pjsoftware.inkedupandroid.databinding.FragmentMainBinding
+import com.pjsoftware.inkedupandroid.databinding.FragmentPensBinding
 
-/**
- * A placeholder fragment containing a simple view.
- */
-class PlaceholderFragment : Fragment() {
+class PensFragment : Fragment() {
 
-    private lateinit var pageViewModel: PageViewModel
-    private var _binding: FragmentMainBinding? = null
+    private lateinit var pensViewModel: PensViewModel
+    private var _binding: FragmentPensBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,7 +21,7 @@ class PlaceholderFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pageViewModel = ViewModelProvider(this).get(PageViewModel::class.java).apply {
+        pensViewModel = ViewModelProvider(this).get(PensViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
         }
     }
@@ -35,11 +31,11 @@ class PlaceholderFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentPensBinding.inflate(inflater, container, false)
         val root = binding.root
 
         val textView: TextView = binding.sectionLabel
-        pageViewModel.text.observe(viewLifecycleOwner, Observer {
+        pensViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
@@ -57,8 +53,8 @@ class PlaceholderFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
+        fun newInstance(sectionNumber: Int): PensFragment {
+            return PensFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

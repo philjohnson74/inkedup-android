@@ -7,8 +7,8 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.pjsoftware.inkedupandroid.R
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2
+    R.string.tab_text_pens,
+    R.string.tab_text_ink
 )
 
 /**
@@ -20,9 +20,13 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
 
     override fun getItem(position: Int): Fragment {
         // getItem is called to instantiate the fragment for the given page.
-        // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1)
+        if(isTabClickedPens(position))
+            return PensFragment.newInstance(position + 1)
+
+        return InkFragment.newInstance(position + 1)
     }
+
+    private fun isTabClickedPens(position: Int) = position == 0
 
     override fun getPageTitle(position: Int): CharSequence? {
         return context.resources.getString(TAB_TITLES[position])
